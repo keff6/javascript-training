@@ -30,14 +30,13 @@ function solution(N) {
   let currentGap = 0;
   const binaryRepresentation = parseInt(N, 10).toString(2);
   
-  for (let i = 0; i < binaryRepresentation.length; i++) {
-      
-      if (+binaryRepresentation[i] === 0) {
-          currentGap++;
-      } else {
-          largestGap = largestGap >= currentGap ? largestGap : currentGap;
-          currentGap = 0;
-      }      
+  for (let i = 0; i < binaryRepresentation.length; i++) {      
+    if (+binaryRepresentation[i] === 0) {
+      currentGap++;
+    } else {
+      largestGap = largestGap >= currentGap ? largestGap : currentGap;
+      currentGap = 0;
+    }      
   }
   return largestGap;
 }
