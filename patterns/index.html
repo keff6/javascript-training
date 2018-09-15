@@ -7,6 +7,7 @@
   <script src="./object-literal.js" type="text/javascript"></script>
   <script src="./namespace.js" type="text/javascript"></script>
   <script src="./module.js" type="text/javascript"></script>
+  <script src="./module-revealed.js" type="text/javascript"></script>
   <title>Patterns</title>
 </head>
 <body>
@@ -23,6 +24,14 @@
     <p><strong>myPc.projects.javascript.showMessage()</strong> should return Hello!</p>
     <p><strong>myPc.projects.javascript.greetMe("your name")</strong> should return Hello "Name"! Nice to meet you!</p>
     <p><strong>myPc.projects.javascript.ageFromBirthYear(your birth year)</strong> should return Your current age is ##</p>
+  </details>
+  <details>
+    <summary>Module</summary>
+    <p><strong>myPc.projects.javascript.module.greetMe('string')</strong> should return Hello! 'string'</p>
+  </details>
+  <details>
+    <summary>Module Revealed</summary>
+    <p><strong>moduleRevealed.greetMe('string')</strong> should return Hello! 'string'</p>
   </details>
 </body>
 </html>
