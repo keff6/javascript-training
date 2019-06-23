@@ -91,16 +91,31 @@ LinkedList.prototype.search = function(val) {
   return null;
 }
 
+// indexOf method
+LinkedList.prototype.indexOf = function(val) {
+  let currentNode = this.head;
+  const indexes = [];
+  let index = 0;
 
+  while(currentNode) {
+    if(currentNode.value === val){
+      indexes.push(index);
+    }
+    index++;
+    currentNode = currentNode.next;
+  }
+  return indexes;
+}
 
 // testing ----------------------------------------------------------
 // run 
 // cd data-structures/linked-lists/ && node linkedListReference.js
 const ll = new LinkedList();
 ll.addToHead(1000);
+ll.addToHead(3000);
 ll.addToHead(2000);
-ll.addToTail(3000);
+ll.addToHead(3000);
 // console.log(ll.removeTail())
 // ll.removeTail()
 
-console.log(ll.search(3000))
+console.log(ll.indexOf(3000))
