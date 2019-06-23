@@ -44,5 +44,43 @@ LinkedList.prototype.addToTail = function(value){
   this.tail = newNode; 
 }
 
+// Add function to remove head
+LinkedList.prototype.removeHead = function() {
+  if(!this.head) return null;
 
+  let val = this.head.value;
+  this.head = this.head.next;
 
+  if(this.head) {
+    this.head.prev = null;
+  } else {
+    this.tail = null;
+  }
+
+  return val;
+}
+
+// Add function to remove tail
+LinkedList.prototype.removeTail = function() {
+  if(!this.tail) return null;
+
+  let val = this.tail.value;
+  this.tail = this.tail.prev;
+
+  if(this.tail) {
+    this.tail.next = null;
+  } else {
+    this.head = null;
+  }
+
+  return val;
+}
+
+// testing
+const ll = new LinkedList();
+ll.addToHead(1000);
+ll.addToHead(2000);
+ll.addToTail(3000);
+console.log(ll.removeTail())
+
+console.log(ll)
