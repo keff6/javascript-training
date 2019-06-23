@@ -76,11 +76,31 @@ LinkedList.prototype.removeTail = function() {
   return val;
 }
 
-// testing
+// Search method
+LinkedList.prototype.search = function(val) {
+  if(!this.head) return null;
+
+  let currentNode = this.head;
+
+  do{
+    if(currentNode.value === val) return currentNode.value;
+    currentNode = currentNode.next;
+  }
+  while(currentNode)
+
+  return null;
+}
+
+
+
+// testing ----------------------------------------------------------
+// run 
+// cd data-structures/linked-lists/ && node linkedListReference.js
 const ll = new LinkedList();
 ll.addToHead(1000);
 ll.addToHead(2000);
 ll.addToTail(3000);
-console.log(ll.removeTail())
+// console.log(ll.removeTail())
+// ll.removeTail()
 
-console.log(ll)
+console.log(ll.search(3000))
