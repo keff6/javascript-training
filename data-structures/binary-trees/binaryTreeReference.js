@@ -16,6 +16,19 @@ BinaryTree.prototype.insert = function(value) {
   }
 }
 
+// Contains method 
+BinaryTree.prototype.contains = function(value) {
+  if(value === this.value) return true
+  else if(value < this.value) {
+    if(!this.left) return false;
+    else return this.left.contains(value);
+  }
+  else if(value > this.value) {
+    if(!this.right) return false;
+    else return this.right.contains(value);
+  }
+}
+
 // Test section ------------
 // Insert
 const bst = new BinaryTree(50);
@@ -32,4 +45,8 @@ bst.insert(59);
 bst.insert(85);
 bst.insert(105);
 
-console.log(bst);
+// console.log(bst);
+
+// Contains
+// const res = bst.contains(60)
+console.log(bst.contains(10));
