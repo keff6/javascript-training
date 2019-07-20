@@ -31,15 +31,11 @@ BinaryTree.prototype.contains = function(value) {
 
 // Depth first traversal 
 BinaryTree.prototype.depthFirstTraversal = function(iteratorFunc, order) {
-  if(this.left) {
-    this.left.depthFirstTraversal(iteratorFunc, order);
-  }
-  if(order === 'in-order') {
-    iteratorFunc(this.value);
-  }
-  if(this.right) {
-    this.right.depthFirstTraversal(iteratorFunc, order);
-  }
+  if(order === 'pre-order') iteratorFunc(this.value);
+  if(this.left) this.left.depthFirstTraversal(iteratorFunc, order);
+  if(order === 'in-order') iteratorFunc(this.value);
+  if(this.right) this.right.depthFirstTraversal(iteratorFunc, order);
+  if(order === 'post-order') iteratorFunc(this.value);
 }
 
 
@@ -66,8 +62,14 @@ bst.insert(105);
 // console.log(bst.contains(10));
 
 // Test: Depth first IN
-bst.depthFirstTraversal(log, 'in-order');
+// bst.depthFirstTraversal(log, 'in-order');
 
 function log(value) {
   console.log(value);
 }
+
+// Test: Depth first PRE
+// bst.depthFirstTraversal(log, 'pre-order');
+
+// Test: Depth first POST
+bst.depthFirstTraversal(log, 'post-order');
