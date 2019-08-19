@@ -38,12 +38,23 @@ BinaryTree.prototype.depthFirstTraversal = function(iteratorFunc, order) {
   if(order === 'post-order') iteratorFunc(this.value);
 }
 
+// Breadth first traversal 
+BinaryTree.prototype.breadthFirstTraversal = function(iteratorFunc) {
+  const queue = [this];
+
+  while(queue.length) {
+    let treeNode = queue.shift();
+    iteratorFunc(treeNode);
+
+    if(treeNode.left) queue.push(treeNode.left)
+    if(treeNode.right) queue.push(treeNode.right)
+  }
+}
 
 // Test section ------------
 // Insert
 const bst = new BinaryTree(50);
 bst.insert(30);
-bst.insert(40);
 bst.insert(70);
 bst.insert(20);
 bst.insert(45);
@@ -64,12 +75,21 @@ bst.insert(105);
 // Test: Depth first IN
 // bst.depthFirstTraversal(log, 'in-order');
 
-function log(value) {
-  console.log(value);
+// log for depth
+// function log(value) {
+//   console.log(value);
+// }
+
+// log for breadth
+function log(node) {
+  console.log(node.value);
 }
 
 // Test: Depth first PRE
 // bst.depthFirstTraversal(log, 'pre-order');
 
 // Test: Depth first POST
-bst.depthFirstTraversal(log, 'post-order');
+// bst.depthFirstTraversal(log, 'post-order');
+
+// Test: Breadth first traversal
+bst.breadthFirstTraversal(log);
