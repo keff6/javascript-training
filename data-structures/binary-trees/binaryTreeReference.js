@@ -51,7 +51,19 @@ BinaryTree.prototype.breadthFirstTraversal = function(iteratorFunc) {
   }
 }
 
-// Test section ------------
+// Get min value
+BinaryTree.prototype.getMinVal = function() {
+  if(this.left) return this.left.getMinVal();
+  return this.value;
+}
+
+// Get max value
+BinaryTree.prototype.getMaxVal = function() {
+  if(this.right) return this.right.getMaxVal();
+  return this.value;
+}
+
+// Test section -----------------------------------
 // Insert
 const bst = new BinaryTree(50);
 bst.insert(30);
@@ -92,4 +104,11 @@ function log(node) {
 // bst.depthFirstTraversal(log, 'post-order');
 
 // Test: Breadth first traversal
-bst.breadthFirstTraversal(log);
+// bst.breadthFirstTraversal(log);
+
+// Test: getMinVal
+console.log(bst.getMinVal())
+
+// Test: getMinVal
+console.log(bst.getMaxVal())
+
