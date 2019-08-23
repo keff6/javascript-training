@@ -21,7 +21,37 @@ HashTable.prototype.hash = function(key) {
   return bucket;
 };
 
+// Insert method
+HashTable.prototype.insert = function(key, value) {
+  const index = this.hash(key);
+
+  if(!this.buckets[index]) this.buckets[index] = new HashNode(key, value);
+  else if(this.buckets[index].key === key) {
+    this.buckets[index].value = value;
+  }
+  else {
+    let currentNode = this.buckets[index];
+    while(currentNode.next) {
+      if(currentNode.next.key === key) {
+        currentNode.next.value = value;
+        return;
+      }
+      currentNode = currentNode.next;
+    }
+    currentNode.next = new HashNode(key, value);
+  }
+}
+
 // TESTS AREA --------------------------------
 const myHT = new HashTable(30);
 // console.log(myHT);
-console.log(myHT.hash('Becca'));
+// console.log(myHT.hash('Becca'));
+
+// Test insert
+myHT.insert('Dean', 'dean@gomail.com');
+myHT.insert('Megane', 'megan@gomail.com');
+myHT.insert('Dane', 'dane@gomail.com');
+myHT.insert('Dean', 'donut@gomail.com');
+myHT.insert('Megane', 'meagn@gomail.com');
+console.log(myHT.buckets);
+
