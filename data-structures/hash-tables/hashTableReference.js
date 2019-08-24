@@ -57,6 +57,24 @@ HashTable.prototype.get = function(key) {
   }
 }
 
+// Retrieve all method
+HashTable.prototype.retrieveAll = function() {
+  const result = [];
+  let index = 0;
+  while(index < this.numBuckets) {
+    if(this.buckets[index]) {
+      let currentNode = this.buckets[index];
+      while(currentNode) {
+        const { key, value } = currentNode;
+        result.push({key, value});
+        currentNode = currentNode.next;
+      }
+    }
+    index++;
+  }
+  return result;
+}
+
 
 // TESTS AREA --------------------------------
 const myHT = new HashTable(30);
@@ -72,5 +90,7 @@ myHT.insert('Megane', 'meagn@gomail.com');
 // console.log(myHT.buckets);
 
 // Test Get
-console.log(myHT.get('Dane'));
+// console.log(myHT.get('Dane'));
 
+// Test retrieve all
+console.log(myHT.retrieveAll());
