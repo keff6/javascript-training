@@ -26,3 +26,47 @@ function fizzBuzz(num) {
     else console.log(i);
   }
 }
+
+/* --------------------------------------------------------------------
+Algorithm # 2:  harmlessRansomNote
+_______________________________________________________________________
+Description: return true if all words from noteText are inside 
+magazineText, return false otherwise.
+----------------------------------------------------------------------*/
+
+// My solution  O (n)
+// Has an error, if some word is twice or more, my solution does not track
+// if there are enough to cover the ransom note
+function harmlessRansomNote(noteText, magazineText) {
+  const noteArray = noteText.split(' ')
+  for(let i = 0; i < noteArray.length; i++) {
+    const regex = new RegExp('\\b(\\w*' + noteArray[i] + '\\w*)\\b', 'gi');
+    if(!magazineText.match(regex)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+// Course solution
+function harmlessRansomNote(noteText, magazineText) {
+  var noteArr = noteText.split(' ');
+  var magazineArr = magazineText.split(' ');
+  var magazineObj = {};
+  
+  magazineArr.forEach(word => {
+    if (!magazineObj[word]) magazineObj[word] = 0;
+    magazineObj[word]++;
+  });
+  
+  var noteIsPossible = true;
+  noteArr.forEach(word => {
+    if (magazineObj[word]) {
+      magazineObj[word]--;
+      if (magazineObj[word] < 0) noteIsPossible = false;
+    }
+    else noteIsPossible = false; 
+  });
+  
+  return noteIsPossible;
+}
