@@ -6,6 +6,7 @@ Algorithm # 2:  harmlessRansomNote
 Algorithm # 3:  isPalindrome
 
 */
+
 /* --------------------------------------------------------------------
 Algorithm # 1:  FizzBuzz
 _______________________________________________________________________
@@ -107,4 +108,55 @@ function isPalindrome(string) {
   });
   
   return lettersArr.join('') === lettersArr.reverse().join('');
+}
+
+/* --------------------------------------------------------------------
+Algorithm # 4:  caesarCipher
+_______________________________________________________________________
+Description: receive a string and a number. Cipher the string moving 
+every character as many positions as the number passed as an argument.
+----------------------------------------------------------------------*/
+
+// My solution
+// error: does not contemplate uppercase
+function caesarCipher(str, num) {
+  const lowerCaseStr = str.toLowerCase();
+  const letters = 'abcdefghijklmnopqrstuvwxyz';
+  
+  const result = lowerCaseStr.split('').map(char => {
+    const currentPos = letters.indexOf(char);
+    if(currentPos > -1) {
+      const finalPos = (currentPos + num) % 26;
+      return letters.substr(finalPos,1);
+    }
+    return char;
+  }).join('')
+  
+  return result
+}
+
+// Course solution
+function caesarCipher(str,num) {
+  num = num % 26;
+  var lowerCaseString = str.toLowerCase();
+  var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  var newString = '';
+  
+  for (var i = 0; i < lowerCaseString.length; i++) {
+    var currentLetter = lowerCaseString[i];
+    if (currentLetter === ' ') {
+      newString += currentLetter;
+      continue;
+    }
+    var currentIndex = alphabet.indexOf(currentLetter);
+    var newIndex = currentIndex + num;
+    if (newIndex > 25) newIndex = newIndex - 26;
+    if (newIndex < 0) newIndex = 26 + newIndex;
+    if (str[i] === str[i].toUpperCase()) {
+      newString += alphabet[newIndex].toUpperCase();
+    }
+    else newString += alphabet[newIndex];
+  };
+  
+  return newString;
 }
