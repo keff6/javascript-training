@@ -1,3 +1,11 @@
+/*
+Index
+=======================================================================
+Algorithm # 1:  FizzBuzz
+Algorithm # 2:  harmlessRansomNote
+Algorithm # 3:  isPalindrome
+
+*/
 /* --------------------------------------------------------------------
 Algorithm # 1:  FizzBuzz
 _______________________________________________________________________
@@ -69,4 +77,34 @@ function harmlessRansomNote(noteText, magazineText) {
   });
   
   return noteIsPossible;
+}
+
+/* --------------------------------------------------------------------
+Algorithm # 3:  isPalindrome
+_______________________________________________________________________
+Description: check if a string is palindrome or not.
+----------------------------------------------------------------------*/
+
+// My solution
+function isPalindrome(string) {
+  const sanitizedString = string.replace(/[&\/\\#,+()$~%.'":*?<>{}\s]/g,'').toLowerCase();
+  for(let i = 0, j = sanitizedString.length - 1; i <= sanitizedString.length / 2; i++, j--){
+    if(sanitizedString[i] !== sanitizedString[j]) return false
+  }
+  
+  return true
+}
+
+// Course solution
+function isPalindrome(string) {
+  string = string.toLowerCase();
+  var charactersArr = string.split('');
+  var validCharacters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  
+  var lettersArr = [];
+  charactersArr.forEach(char => {
+    if (validCharacters.indexOf(char) > -1) lettersArr.push(char);
+  });
+  
+  return lettersArr.join('') === lettersArr.reverse().join('');
 }
