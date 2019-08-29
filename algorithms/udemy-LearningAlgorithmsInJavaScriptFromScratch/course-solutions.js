@@ -160,3 +160,39 @@ function caesarCipher(str,num) {
   
   return newString;
 }
+
+/* --------------------------------------------------------------------
+Algorithm # 5:  reverseWords
+_______________________________________________________________________
+Description: reverse every word in a string but keep the word order
+do not use array reverse() function
+----------------------------------------------------------------------*/
+
+// My solution
+function reverseWords(string) {
+  return string.split(' ')
+          .map(word => {
+            let reversedWord = ''
+            for(let i = word.length -1; i>=0; i--) {
+              reversedWord += word[i]
+            }
+            return reversedWord
+          })
+          .join(' ')
+}
+
+// Course solution
+function reverseWords(string) {
+  var wordsArr = string.split(' ');
+  var reversedWordsArr = [];
+  
+  wordsArr.forEach(word => {
+    var reversedWord = '';
+    for (var i = word.length - 1; i >= 0; i--) {
+      reversedWord += word[i];
+    };
+    reversedWordsArr.push(reversedWord);
+  });
+  
+  return reversedWordsArr.join(' ');
+}
