@@ -196,3 +196,31 @@ function reverseWords(string) {
   
   return reversedWordsArr.join(' ');
 }
+
+/* --------------------------------------------------------------------
+Algorithm # 6:  reverseArrayInPlace
+_______________________________________________________________________
+Description: reverse an array in place an return the same array
+manipulated. Do not use reverse() function
+----------------------------------------------------------------------*/
+
+// My solution
+function reverseArrayInPlace(arr){
+  for(let i = 0, j = arr.length - 1; i < arr.length / 2; i++, j--) {
+    const aux = arr[i];
+    arr[i] = arr[j];
+    arr[j] = aux;
+  }
+  return arr;
+}
+
+// Course solution
+function reverseArrayInPlace(arr) {
+  for (var i = 0; i < arr.length / 2; i++) {
+    var tempVar = arr[i];
+    arr[i] = arr[arr.length - 1 - i];
+    arr[arr.length - 1 - i] = tempVar;
+  }
+  
+  return arr;
+}
