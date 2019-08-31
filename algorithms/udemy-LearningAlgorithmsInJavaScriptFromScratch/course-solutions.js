@@ -224,3 +224,113 @@ function reverseArrayInPlace(arr) {
   
   return arr;
 }
+
+/* --------------------------------------------------------------------
+Algorithm # 7:  meanMedianMode
+_______________________________________________________________________
+Description: return and object like:
+{
+  mean: 0, median: 0, mode: 0
+}
+
+from a number array using functional programming
+----------------------------------------------------------------------*/
+
+// My solution
+function getMean(array){
+  return array.reduce((current, total) => current + total) / array.length;
+}
+
+// slightly incorrect
+function getMedian(array){
+  const aux = array.slice();
+  return aux.sort((a,b) => a-b)[Math.ceil(aux.length / 2)];
+}
+
+function getMode(array){
+  const aux = array.sort((a,b) => a-b)
+  let mode = array[0]
+  let maxCount = 0;
+  let currentCount = 0;
+  
+  for(let i = 0; i < aux.length - 1; i++) {
+    if(aux[i] === aux[i+1]) {
+      currentCount++
+    } else {
+      if(currentCount > maxCount) {
+        mode = aux[i];
+        maxCount = currentCount;
+        currentCount = 0;
+      }
+    }
+  }
+  return mode;
+}
+
+function meanMedianMode(array){
+  return {
+    mean: getMean(array),
+    median: getMedian(array),
+    mode: getMode(array)
+  }
+}
+
+// Course solution
+function meanMedianMode(array) {
+  return {
+    mean: getMean(array),
+    median: getMedian(array),
+    mode: getMode(array)
+  }
+}
+ 
+function getMean(array) {
+  var sum = 0;
+  
+  array.forEach(num => {
+    sum += num;
+  });
+  
+  var mean = sum / array.length;
+  return mean;
+}
+ 
+function getMedian(array) {
+  array.sort(function(a, b){return a-b});
+  var median;
+  
+  if (array.length % 2 !== 0) {
+    median = array[Math.floor(array.length / 2)];
+  }
+  else {
+    var mid1 = array[(array.length / 2) - 1];
+    var mid2 = array[array.length / 2];
+    median = (mid1 + mid2) / 2;
+  }
+  
+  return median;
+}
+ 
+function getMode(array) {
+  var modeObj = {};
+  
+  // create modeObj
+  array.forEach(num => {
+    if (!modeObj[num]) modeObj[num] = 0;
+    modeObj[num]++;
+  });
+  
+  // create array of mode/s 
+  var maxFrequency = 0;
+  var modes = [];
+  for (var num in modeObj) {
+    if (modeObj[num] > maxFrequency) {
+      modes = [num];
+      maxFrequency = modeObj[num];
+    }
+    else if (modeObj[num] === maxFrequency) modes.push(num);
+  }
+  // if every value appears same amount of times 
+  if (modes.length === Object.keys(modeObj).length) modes = [];
+  return modes;
+}
