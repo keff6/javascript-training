@@ -334,3 +334,42 @@ function getMode(array) {
   if (modes.length === Object.keys(modeObj).length) modes = [];
   return modes;
 }
+
+/* --------------------------------------------------------------------
+Algorithm # 8:  twoSum
+_______________________________________________________________________
+Description: given an array and a number, return all the pairs
+iside the array that sums up to number
+----------------------------------------------------------------------*/
+
+// My solution
+function twoSum(array, number) {
+  const numberToFind = {}
+  const result = [];
+  for(let i = 0; i < array.length; i++) {
+    if(numberToFind[array[i]]){
+      result.push([array[i], numberToFind[array[i]]])
+    }
+    else {
+      numberToFind[number - array[i]] = array[i]
+    }
+  }
+  return result
+}
+
+// Course solution
+function twoSum(numArray, sum) {
+  var pairs = [];
+  var hashTable = [];
+
+  for (var i = 0; i < numArray.length; i++) {
+    var currNum = numArray[i];
+    var counterpart = sum - currNum;
+    if (hashTable.indexOf(counterpart) !== -1) {
+      pairs.push([ currNum, counterpart ]);
+    }
+    hashTable.push(currNum);
+  }
+  
+  return pairs;
+}
