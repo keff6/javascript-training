@@ -373,3 +373,39 @@ function twoSum(numArray, sum) {
   
   return pairs;
 }
+
+/* --------------------------------------------------------------------
+Algorithm # 9:  binary search
+_______________________________________________________________________
+Description: given an array and a number, search for that number
+in a binary way using recursion
++ Assume the array is always sorted
+----------------------------------------------------------------------*/
+
+// My solution
+function binarySearch(arr, num){
+  const middleIndex = Math.ceil(arr.length / 2) - 1;
+  if(arr.length === 0) {
+    return false
+  } else if(arr[middleIndex] === num) {
+    return true
+  } else {
+    const newArr = arr[middleIndex] > num ? arr.slice(0, middleIndex) : arr.slice(middleIndex + 1)
+    return binarySearch(newArr, num)
+  }
+}
+
+// Course solution
+function binarySearch(numArray, key) {
+  var middleIdx = Math.floor(numArray.length / 2);
+  var middleElem = numArray[middleIdx];
+  
+  if (middleElem === key) return true;
+  else if (middleElem < key && numArray.length > 1) {
+      return binarySearch(numArray.splice(middleIdx, numArray.length), key);
+  }
+  else if (middleElem > key && numArray.length > 1) {
+      return binarySearch(numArray.splice(0, middleIdx), key);
+  }
+  else return false;
+}
