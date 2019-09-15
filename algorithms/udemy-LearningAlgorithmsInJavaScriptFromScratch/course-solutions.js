@@ -4,6 +4,13 @@ Index
 Algorithm # 1:  FizzBuzz
 Algorithm # 2:  harmlessRansomNote
 Algorithm # 3:  isPalindrome
+Algorithm # 4:  caesarCipher
+Algorithm # 5:  reverseWords
+Algorithm # 6:  reverseArrayInPlace
+Algorithm # 7:  meanMedianMode
+Algorithm # 8:  twoSum
+Algorithm # 9:  binary search
+Algorithm # 10:  fibonacci
 
 */
 
@@ -408,4 +415,24 @@ function binarySearch(numArray, key) {
       return binarySearch(numArray.splice(0, middleIdx), key);
   }
   else return false;
+}
+
+/* --------------------------------------------------------------------
+Algorithm # 10:  fibonacci
+_______________________________________________________________________
+Description: given a number return the fibonacci value in that position
+use recursion
+----------------------------------------------------------------------*/
+
+// My solution (O2 elevated n)
+function fibonacci(n){
+  if(n <= 0) return 0
+  else if(n === 1 || n === 2) return 1
+  else return fibonacci(n-1) + fibonacci(n-2)
+}
+
+// Course solution
+function fibonacci(position) {
+  if (position < 3) return 1;
+  else return fibonacci(position - 1) + fibonacci(position - 2);
 }
