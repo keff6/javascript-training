@@ -11,7 +11,7 @@ Algorithm # 7:  meanMedianMode
 Algorithm # 8:  twoSum
 Algorithm # 9:  binary search
 Algorithm # 10:  fibonacci
-
+Algorithm # 11:  fibonacci memoized
 */
 
 /* --------------------------------------------------------------------
@@ -435,4 +435,27 @@ function fibonacci(n){
 function fibonacci(position) {
   if (position < 3) return 1;
   else return fibonacci(position - 1) + fibonacci(position - 2);
+}
+
+/* --------------------------------------------------------------------
+Algorithm # 11:  fibonacci mmeoized (fibMemo)
+_______________________________________________________________________
+Description: program a fibonacci search that uses cache to made the
+search for a value only once
+----------------------------------------------------------------------*/
+
+// My solution
+// Didn't came up with anything after 2 days
+
+// Course solution
+function fibMemo(index, cache) {
+  cache = cache || [];
+  if (cache[index]) return cache[index];
+  else {
+    if (index < 3) return 1;
+    else {
+      cache[index] = fibMemo(index - 1, cache) + fibMemo(index - 2, cache);
+    }
+  }
+  return cache[index];
 }
