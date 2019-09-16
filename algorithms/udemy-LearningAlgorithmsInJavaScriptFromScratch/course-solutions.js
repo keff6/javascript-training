@@ -12,6 +12,7 @@ Algorithm # 8:  twoSum
 Algorithm # 9:  binary search
 Algorithm # 10:  fibonacci
 Algorithm # 11:  fibonacci memoized
+Algorithm # 12:  sieveOfErathostenes
 */
 
 /* --------------------------------------------------------------------
@@ -458,4 +459,51 @@ function fibMemo(index, cache) {
     }
   }
   return cache[index];
+}
+
+/* --------------------------------------------------------------------
+Algorithm # 12:  sieveOfErathostenes
+_______________________________________________________________________
+Description: create a function that receives a num, and return all the
+prime numbers between 0 and num
+----------------------------------------------------------------------*/
+
+// My solution
+function sieveOfErathostenes(num) {
+  const initialArray = Array(num).fill(true)
+  const primes = []
+  for(let i = 0; i < num; i++) {
+    if(i < 2) initialArray[i] = false
+    if(initialArray[i] !== false) {
+      for(let j = i*2; j < num; j+=i){
+        initialArray[j] = false
+      }
+    }
+  }
+  const result = initialArray.map((val, index) => val && index).filter(n => Number(n))
+  return result
+}
+
+// Course solution
+function sieveOfEratosthenes(n) {
+  var primes = [];
+  for (var i = 0; i <= n; i++) {
+    primes[i] = true;
+  }
+  
+  primes[0] = false;
+  primes[1] = false;
+  
+  for (var i = 2; i <= Math.sqrt(n); i++) {
+    for (j = 2; i * j <= n; j++) {
+      primes[i * j] = false;
+    }
+  }
+  
+  var result = [];
+  for (var i = 0; i < primes.length; i++) {
+    if (primes[i]) result.push(i);
+  }
+  
+  return result;
 }
