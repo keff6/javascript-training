@@ -13,6 +13,7 @@ Algorithm # 9:  binary search
 Algorithm # 10:  fibonacci
 Algorithm # 11:  fibonacci memoized
 Algorithm # 12:  sieveOfErathostenes
+Algorithm # 13:  bubbleSort
 */
 
 /* --------------------------------------------------------------------
@@ -506,4 +507,40 @@ function sieveOfEratosthenes(n) {
   }
   
   return result;
+}
+
+/* --------------------------------------------------------------------
+Algorithm # 13:  bubbleSort
+_______________________________________________________________________
+Description: order a number array using bubble sort method
+(each pass the greater number is popped to the far right)
+----------------------------------------------------------------------*/
+
+// My solution
+function bubbleSort(array) {
+  let len = array.length - 1;
+  for(let i = 0; i < array.length - 1; i++, len--){
+    for(let j = 0; j < len; j++){
+      if(array[j] > array[j+1]){
+        let aux = array[j+1];
+        array[j+1] = array[j];
+        array[j] = aux;
+      }
+    }
+  }
+  return array
+}
+
+// Course solution
+function bubbleSort(array) {
+  for (var i = array.length; i > 0; i--) {
+    for (var j = 0; j < i; j++) {
+      if (array[j] > array[j + 1]) {
+        var temp = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = temp;
+      }
+    }
+  }
+  return array;
 }
