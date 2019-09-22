@@ -14,6 +14,7 @@ Algorithm # 10:  fibonacci
 Algorithm # 11:  fibonacci memoized
 Algorithm # 12:  sieveOfErathostenes
 Algorithm # 13:  bubbleSort
+Algorithm # 14:  mergeSort
 */
 
 /* --------------------------------------------------------------------
@@ -543,4 +544,76 @@ function bubbleSort(array) {
     }
   }
   return array;
+}
+
+/* --------------------------------------------------------------------
+Algorithm # 14:  mergeSort
+_______________________________________________________________________
+Description: you have to create 2 functions:
++ mergeSort: has to be used recursively 
++ merge: merge 2 arrays and return an ordered result array 
+----------------------------------------------------------------------*/
+// My solution
+function mergeSort(array) {
+  if(array.length === 1) return array;
+  
+  const half = Math.ceil(array.length / 2);
+  const firstHalf = array.slice(0, half);
+  const secondHalf =  array.slice(half);
+  
+  if(firstHalf.length === 1 && secondHalf.length === 1){
+    return merge(firstHalf, secondHalf);
+  } else {
+    return merge(mergeSort(firstHalf), mergeSort(secondHalf));
+  }
+}
+
+function merge(arr1, arr2) {
+  const result = [];
+  const resultLength = arr1.length + arr2.length;
+  let i1 = 0;
+  let i2 = 0;
+
+  while(result.length < resultLength) {
+    if(i1 >= arr1.length) {
+      result.push(arr2[i2])
+      i2++
+    } else if(i2 >= arr2.length) {
+      result.push(arr1[i1])
+      i1++
+    } else {
+      if(arr1[i1] < arr2[i2]) {
+        result.push(arr1[i1])
+        i1++
+      } else {
+        result.push(arr2[i2])
+        i2++
+      }
+    }
+  }
+  return result;
+}
+
+// Course solution
+function mergeSort (arr) {    
+  if (arr.length < 2) return arr;
+  var middleIndex = Math.floor(arr.length / 2);
+  var firstHalf = arr.slice(0, middleIndex);
+  var secondHalf = arr.slice(middleIndex);
+  
+  return merge(mergeSort(firstHalf), mergeSort(secondHalf));
+}
+
+function merge (array1, array2) { 
+  var result = [];
+  while (array1.length && array2.length) {
+    var minElem;
+    if (array1[0] < array2[0]) minElem = array1.shift();
+    else minElem = array2.shift();
+    result.push(minElem);
+  }
+  
+  if (array1.length) result = result.concat(array1);
+  else result =result.concat(array2);
+  return result;
 }
