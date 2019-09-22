@@ -15,6 +15,7 @@ Algorithm # 11:  fibonacci memoized
 Algorithm # 12:  sieveOfErathostenes
 Algorithm # 13:  bubbleSort
 Algorithm # 14:  mergeSort
+Algorithm # 15:  maxStockProfit
 */
 
 /* --------------------------------------------------------------------
@@ -553,6 +554,7 @@ Description: you have to create 2 functions:
 + mergeSort: has to be used recursively 
 + merge: merge 2 arrays and return an ordered result array 
 ----------------------------------------------------------------------*/
+
 // My solution
 function mergeSort(array) {
   if(array.length === 1) return array;
@@ -616,4 +618,50 @@ function merge (array1, array2) {
   if (array1.length) result = result.concat(array1);
   else result =result.concat(array2);
   return result;
+}
+
+/* --------------------------------------------------------------------
+Algorithm # 15:  maxStockProfit
+_______________________________________________________________________
+Description: given an array of numbers calculate the maximum difference
+AKA max possible profit. the solution should be O(n)
+----------------------------------------------------------------------*/
+
+// My solution
+function maxStockProfit(array) {
+  if(!array.length) return -1;
+  let [min, max] = [array[0],0];
+  
+  for(let i = 1; i <  array.length; i++) {
+    if(array[i] < min) min = array[i]
+    else if(array[i] > max) max = array[i]
+  }
+  
+  const profit = Math.abs(max) - Math.abs(min);
+  return profit < 0 ? -1 : profit;
+}
+
+// Course solution
+function maxStockProfit (pricesArr) {
+  var maxProfit = -1;
+  var buyPrice = 0;
+  var sellPrice = 0;
+  
+  var changeBuyPrice = true;
+  
+  for (var i = 0; i < pricesArr.length; i++) {
+    if (changeBuyPrice) buyPrice = pricesArr[i];
+    sellPrice = pricesArr[i + 1];
+    
+    if (sellPrice < buyPrice) {
+      changeBuyPrice = true;
+    }
+    else {
+      var tempProfit = sellPrice - buyPrice;
+      if (tempProfit > maxProfit) maxProfit = tempProfit;
+      changeBuyPrice = false;
+    }
+  }
+  
+  return maxProfit;
 }
