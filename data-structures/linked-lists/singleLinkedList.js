@@ -122,6 +122,48 @@ class SingleLinkedList{
     
     return true;
   }
+
+  remove(index){
+    if(index < 0 || index >= this.length) return undefined;
+    if(index === this.length - 1) return this.pop();
+    if(index === 0) return this.shift();
+    
+    const nodePrev = this.get(index - 1);
+    const removed = nodePrev.next;
+    nodePrev.next = removed.next;
+    this.length--;
+    return removed;
+  }
+
+  reverse() {
+    if(this.length <= 0) return this;
+    const aux = this.head;
+    this.head = this.tail;
+    this.tail = aux;
+    let currentNode = this.tail
+    let nextNode = currentNode.next
+    let prevNode = null
+
+    
+    while(currentNode){
+      currentNode.next = prevNode
+      prevNode = currentNode
+      currentNode = nextNode
+      nextNode = currentNode ? currentNode.next : null
+    }
+    return this;
+  }
+
+  print() {
+    let currentNode = this.head;
+    let result = '';
+    
+    while(currentNode) {
+      result += `(${currentNode.val})${currentNode.next? ' -> ' : ''}`
+      currentNode = currentNode.next;
+    }
+    console.log(result)
+  }
 }
 
 // Test -----------------------------------
