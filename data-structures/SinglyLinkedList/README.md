@@ -98,22 +98,21 @@ push(val) {
 ```javascript
 pop(){
   if(!this.head) return undefined
-
+  
   let current = this.head;
-  while(current) {
-    const nextNode = current.next
-    if(!nextNode.next) { // if it is the tail
-      current.next = null
-      this.tail = current;
-      this.length--;
-      if(this.length === 0) {
-        this.head =  null;
-        this.tail = null;
-      }
-      return nextNode;
-    }
-    current = nextNode
+  let prev = current;
+  while(current.next) {
+    prev = current
+    current = current.next
   }
+  prev.next = null
+  this.tail = prev;
+  this.length--;
+  if(this.length === 0) {
+    this.tail = null;
+    this.head = null;
+  }
+  return current;
 }
 ```
 #### shift - Remove the first node

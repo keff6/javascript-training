@@ -29,6 +29,29 @@ class DoublyLinkedList{
     return this;
   }
 
+  pop(){
+    // if ther is no tail return undefned
+    if(!this.tail) return undefined
+    // save the current tail in a variable
+    const removeNode = this.tail
+    // if the length is 1 set head and tail to null
+    if(this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      // set tail as the prev node
+      this.tail = removeNode.prev
+      // set the tail prev node next to null
+      removeNode.prev.next = null;
+      // clean the removed node previous connection
+      removeNode.prev = null;
+    }
+    // decrement
+    this.length--;
+    // return node
+    return removeNode;
+  }
+
   print() {
     let currentNode = this.head;
     let result = '';
