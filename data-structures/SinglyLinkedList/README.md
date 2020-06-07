@@ -8,10 +8,14 @@ A Singly Linked List data structurel is a simple, unidirectional list formed by 
 It is better to use a Singly Linked List over an array if you have to add values at the end or the beginning multiple times, since it’s easier with a list because it does’t have indexes, so if you add something at the beginning the list doesn’t have to re-index all other elements to the right.
 
 Good for:
-` * Insertions at the beggining and the end `
+```
+Insertions at the beggining and the end
+```
 
 Bad for:
-` * Random access of a determined node `
+```
+Random access of a determined node
+```
 
 #### Node
 ```javascript
