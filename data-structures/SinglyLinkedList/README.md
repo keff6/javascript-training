@@ -7,6 +7,12 @@
 A Singly Linked List data structurel is a simple, unidirectional list formed by nodes. Each node has a value and a pointer to the next node in the list, null if it is the last one. The Singly Linked List has a head, which is the first element in the list, a tail, which is the last one and a length, which is a counter for the number of nodes contained in the list on a specific moment.
 It is better to use a Singly Linked List over an array if you have to add values at the end or the beginning multiple times, since it’s easier with a list because it does’t have indexes, so if you add something at the beginning the list doesn’t have to re-index all other elements to the right.
 
+Good for:
+` * Insertions at the beggining and the end `
+
+Bad for:
+` * Random access of a determined node `
+
 #### Node
 ```javascript
 class Node {

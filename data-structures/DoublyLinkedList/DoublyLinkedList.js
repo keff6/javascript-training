@@ -52,6 +52,50 @@ class DoublyLinkedList{
     return removeNode;
   }
 
+  shift() {
+    // check if there is a head if not return undefined
+    if(!this.head) return undefined
+    // set the head into a variable
+    const removeNode =  this.head;
+    // if length === 1 then set tail and head to null
+    if(this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      // set head to the current head next
+      this.head = removeNode.next;
+      // set new head prev to null
+      this.head.prev = null;
+      // set remove node next to null
+      removeNode.next = null;
+    }
+    // decrement length
+    this.length--;
+    // return removed node
+    return removeNode;
+  }
+
+  unshift(val) {
+    // creates a new node with the value
+    const newNode = new Node(val)
+    // if length === 0 set tail and head to be the new node    
+    if(this.length === 0) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      // set new node next to current head
+      newNode.next = this.head;
+      // set current head prev to new node
+      this.head.prev = newNode;
+      // set new node as head
+      this.head = newNode;
+    }
+    // increment 
+    this.length++;
+    // return list
+    return this;
+  }
+  
   print() {
     let currentNode = this.head;
     let result = '';
