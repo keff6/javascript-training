@@ -25,7 +25,6 @@ class DoublyLinkedList{
       this.tail = newNode;
     }
     this.length++;
-    
     return this;
   }
 
