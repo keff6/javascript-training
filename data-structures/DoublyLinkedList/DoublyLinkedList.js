@@ -95,6 +95,90 @@ class DoublyLinkedList{
     // return list
     return this;
   }
+
+  get(index) {
+    // if index < 0 or > length return undefined
+    if(index < 0 || index >= this.length) return undefined;
+    // calculate if index is on first or second half
+    let current = undefined; 
+    // if it is in first half navigate to it from the head
+    if(index <= this.length/2) {
+      current = this.head;
+      for(let i = 0; i <= this.length/2; i++) {
+        if(index === i) break;
+        current = current.next;
+      }
+    } else {
+      // if is on the seconf]d half navigate to it from the tail
+      current = this.tail;
+      for(let i = this.length - 1; i > this.length/2; i--) {
+        if(index === i) break;
+        current = current.prev;
+      }
+    }
+    // return node or value
+    return current;
+  }
+
+  set(index, value) {
+    // create a variable and call get to get the node
+    const foundNode = this.get(index);
+    // if node is found set the val to value
+    if(foundNode){ 
+      foundNode.val = value;
+      // return true
+      return true
+    }
+    // else return false
+    return false
+  }
+
+  insert(index, value) {
+    // if index < 0 ir > this.length return false
+    if(index < 0 || index > this.length) return false;
+    // if index = 0 use unshift
+    if(index === 0) return !!this.unshift(value);
+    // if index = list lenght use push
+    if(index === this.length) return !!this.push(value);
+    
+    // create new node with the passed value
+    const newNode = new Node(value);
+    // get the node in the position index - 1 using get
+    const prevNode = this.get(index - 1)
+    // set new node next to be node in index - 1 next
+    newNode.next = prevNode.next;
+    // set node in index - 1 next to be new node
+    prevNode.next = newNode;
+    // set new node next prev value to be newNode
+    newNode.next.prev = newNode;
+    // set new node prev value to node in index - 1
+    newNode.prev = prevNode;
+    // increase length
+    this.length++;
+    // return true
+    return true;
+  }
+
+  remove(index) {
+    // if index < 0 or >= this.length return false
+    if(index < 0 || index >= this.length) return false;
+    // if index = 0 use shift()
+    if(index === 0) return this.shift();
+    // if index = length - 1 use pop()
+    if(index === this.length - 1) return this.pop();
+    // use get to get the node at index position
+    const removedNode = this.get(index);
+    // connect the previous node and the next related to the node to remove
+    removedNode.prev.next = removedNode.next;
+    removedNode.next.prev = removedNode.prev;
+    // set next and prev to null on the removed node
+    removedNode.prev = null;
+    removedNode.next = null;
+    // decrement length
+    this.length--;
+    // return true
+    return removedNode;
+  }
   
   print() {
     let currentNode = this.head;
