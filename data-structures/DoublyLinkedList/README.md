@@ -1,6 +1,6 @@
 # Doubly Linked List
 
-<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/SLL.png?raw=true" width="500">
+<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/DLL.png?raw=true" width="500">
 
 ## Description
 Similar to the Singly Linked List, the main difference here is that we can navigate the list also backwards (from tail to head) thanks to a property on each node named **prev** that points to the previous node the same way next points to the next node. Better than SLL in search nodes, it can do it in half the iterations, however, DLL takes more memory considering the extra pointer.
