@@ -310,6 +310,36 @@ remove(index) {
 }
 ```
 
+#### reverse - Reverse the list
+
+<details>
+  <summary>See logic</summary>
+  
+  * Loop through the list in any direction <->
+  * set the current node to the head (or tail if you are looping backwards)
+  * While there is a current node invert the next and prev nodes
+  * invert the tail and the head
+  * return list
+</details>
+
+```javascript
+reverse() {
+  let currentNode = this.head;
+  while(currentNode) {
+    const nextNode = currentNode.next;
+    currentNode.next = currentNode.prev;
+    currentNode.prev = nextNode
+    currentNode = nextNode
+  }
+  const oldTail = this.tail;
+  const oldHead = this.head;
+  
+  this.head = oldTail;
+  this.tail = oldHead;
+  return this;
+}
+```
+
 #### print - Helper to print the list in a legible way (console)
 ```javascript
 print() {

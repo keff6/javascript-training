@@ -178,6 +178,23 @@ class DoublyLinkedList{
     // return true
     return removedNode;
   }
+
+  reverse() {
+    // loop through the list in any direction
+    let currentNode = this.head;
+    while(currentNode) {
+      const nextNode = currentNode.next;
+      currentNode.next = currentNode.prev;
+      currentNode.prev = nextNode
+      currentNode = nextNode
+    }
+    const oldTail = this.tail;
+    const oldHead = this.head;
+    
+    this.head = oldTail;
+    this.tail = oldHead;
+    return this;
+  }
   
   print() {
     let currentNode = this.head;
