@@ -13,6 +13,27 @@ Undo / Redo functionlaity (like photoshop)
 React routing uses stacks for the history
 ```
 
+#### Node
+```javascript
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
+}
+```
+#### List
+```javascript
+class Stack {
+  constructor() {
+    this.size = 0;
+    this.first = null;
+    this.last = null;
+  }
+  ...
+}
+```
+
 ## Methods
 
 For the Stack we have just a couple of methods because we only need to push and pop in a LIFO manner.
@@ -47,12 +68,12 @@ push(value){=
 }
 ```
 
-#### pop - Remove the last node 
+#### pop - Remove the first node 
 
 <details>
   <summary>See logic</summary>
   
-  * If the list is empty return null
+  * If the stack is empty return null
   * Save the current first in a variable
   * If the length is 1 set last to null
   * set current first next to be the first
