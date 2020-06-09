@@ -22,7 +22,7 @@ class Node {
   }
 }
 ```
-#### List
+#### Stack
 ```javascript
 class Stack {
   constructor() {
