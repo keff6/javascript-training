@@ -65,6 +65,33 @@ class BinarySearchTree{
     // if not found return false
     return false;
   }
+
+  // Breadh first iterative
+  bredthFirstTraverse() {
+    if(!this.root) return [];
+    
+    // Create a queue to keep track of the nodes to visit
+    const toSeekQueue = [];
+    // Create an array to save the values to be returned at the end
+    const values = [];
+    let currentNode = this.root;
+    // Add root to the queue
+    toSeekQueue.push(currentNode)
+    
+    // Loop while there are nodes to visit in the queue
+    while(toSeekQueue.length > 0) {
+      // set current node as dequeued value
+      currentNode = toSeekQueue.shift();
+      // Add current node value to the results array
+      values.push(currentNode.value)
+      // If current node has left node enqueue it
+      if(currentNode.left) toSeekQueue.push(currentNode.left)
+      // If current node has right node enqueue it
+      if(currentNode.right) toSeekQueue.push(currentNode.right)
+    }
+    // return values
+    return values
+  }
   
   print() {}
 }
