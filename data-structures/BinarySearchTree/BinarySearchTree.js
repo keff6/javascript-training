@@ -138,6 +138,29 @@ class BinarySearchTree{
     // return values
     return values
   }
+
+  depthFirstInOrder() {
+    // validate if there is no root
+    if(!this.root) return [];
+    
+    // Create variables for the return array and the current node
+    const values = [];
+    let current = this.root;
+    
+    const traverse = (node) => {
+      // traverse to the left recursively
+      if(node.left) traverse(node.left)
+      // push the value of the current node
+      values.push(node.value)
+      // traverse to the right recursively
+      if(node.right) traverse(node.right)
+    } 
+    
+    traverse(current)
+    
+    // return values
+    return values
+  }
   
   print() {}
 }
