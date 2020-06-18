@@ -173,10 +173,98 @@ bredthFirstTraverse() {
 }
 ```
 
-#### TODO:
-depthFirstPreOrder
-depthFirstPostOrder
-depthFirstInOrder
+#### Depth First Traverse Pre Order - visit every node of the tree (recursive solution)
+
+<details>
+  <summary>See logic</summary>
+  
+  * check if there is a root, if not return empty array
+  * Create variables for the return array and the current node
+  * Create a helper function to traverse recursively
+  * push the value of the current node
+  * traverse to the left recursively
+  * traverse to the right recursively
+  * return values
+</details>
+
+```javascript
+depthFirstPreOrder() {
+  if(!this.root) return [];
+
+  const values = [];
+  let current = this.root;
+  
+  const traverse = (node) => {
+    values.push(node.value)
+    if(node.left) traverse(node.left)
+    if(node.right) traverse(node.right)
+  }
+  traverse(current)
+  return values
+}
+```
+
+#### Depth First Traverse Post Order - visit every node of the tree (recursive solution)
+
+<details>
+  <summary>See logic</summary>
+  
+  * check if there is a root, if not return empty array
+  * Create variables for the return array and the current node
+  * Create a helper function to traverse recursively
+  * traverse to the left recursively
+  * traverse to the right recursively
+  * push the value of the current node
+  * return values
+</details>
+
+```javascript
+depthFirstPostOrder() {
+  if(!this.root) return [];
+
+  const values = [];
+  let current = this.root;
+  
+  const traverse = (node) => {
+    if(node.left) traverse(node.left)
+    if(node.right) traverse(node.right)
+    values.push(node.value)
+  }
+  traverse(current)
+  return values
+}
+```
+
+#### Depth First Traverse In Order - visit every node of the tree (recursive solution)
+
+<details>
+  <summary>See logic</summary>
+  
+  * check if there is a root, if not return empty array
+  * Create variables for the return array and the current node
+  * Create a helper function to traverse recursively
+  * traverse to the left recursively
+  * push the value of the current node
+  * traverse to the right recursively
+  * return values
+</details>
+
+```javascript
+depthFirstInOrder() {
+  if(!this.root) return [];
+
+  const values = [];
+  let current = this.root;
+  
+  const traverse = (node) => {
+    if(node.left) traverse(node.left)
+    values.push(node.value)
+    if(node.right) traverse(node.right)
+  }
+  traverse(current)
+  return values
+}
+```
 
 ## Big O
 
