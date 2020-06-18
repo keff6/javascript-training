@@ -1,10 +1,9 @@
-# Binary Tree
+# Binary Search Tree
 
 ## Description
 
 Trees are non-linear data structures that contains a root and child nodes.
-In BST every parent node has at most two children
-every node on the left of the parent node is always less that the parent, and every node on the right of the parent is greater than the parent.
+In BST every parent node has at most two children, every node on the left of the parent node is always less that the parent, and every node on the right of the parent is greater than the parent.
 
 
 #### BST Traverse
@@ -13,20 +12,20 @@ There are many ways to traverse and get the values of the nodes of a binary tree
 ##### Breadth First
 With breadth first algorithm we visit nodes on an horizontal way first, so we can get the node values ordered by the levels of the tree.
 
-<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/BFT.gif?raw=true" width="500">
+<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/BFT.gif?raw=true" width="300">
 
 ##### Depth First
 > Pre Order
 
-<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/BSTPRE.gif?raw=true" width="500">
+<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/BSTPRE.gif?raw=true" width="300">
 
 > Post Order
 
-<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/BSTPOST.gif?raw=true" width="500">
+<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/BSTPOST.gif?raw=true" width="300">
 
 > In Order
 
-<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/BSTIN.gif?raw=true" width="500">
+<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/BSTIN.gif?raw=true" width="300">
 
 
 Real life example:
