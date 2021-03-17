@@ -1,11 +1,21 @@
-class MaxBinaryHeap {
+class Node {
+  constructor(val, priority) {
+    this.val = val;
+    this.priority = priority;
+  }
+}
+
+
+class PriorityQueue {
   constructor() {
     this.values = []
   }
   
-  insert(val) {
+  enqueue(val, priority) {
+    // create node
+    const newNode = new Node(val, priority)
     // push the value into the values property
-    this.values.push(val);
+    this.values.push(newNode);
     // Bubble up
     this.bubbleUp();
   }
@@ -18,7 +28,7 @@ class MaxBinaryHeap {
       const parentIndex = Math.floor((index - 1)/2);
       const parent = this.values[parentIndex];
       
-      if(element < parent) break;
+      if(element.priority >= parent.priority) break;
       
       this.values[parentIndex] = element;
       this.values[index] = parent;
@@ -40,14 +50,14 @@ class MaxBinaryHeap {
 
       if(leftChildIdx < len) {
         leftChild = this.values[leftChildIdx];
-        if(leftChild < el) {
+        if(leftChild.priority < el.priority) {
           swap = leftChildIdx;
         }
       }
 
       if(rightChildIdx < len) {
         rightChild = this.values[rightChildIdx];
-        if((swap === null && rightChild > el) || (swap !== null && rightChild > leftChild)){
+        if((swap === null && rightChild.priority > el.priority) || (swap !== null && rightChild.priority > leftChild.priority)){
           swap = rightChildIdx;
         }
       }
@@ -57,35 +67,32 @@ class MaxBinaryHeap {
     }
   }
 
-  extractMax() {
+  dequeue() {
+    console.log('DEQUEUE')
     const len = this.values.length;
     // Swap the first value in the values with the last one
     [this.values[0], this.values[len - 1]] = [this.values[len - 1], this.values[0]];
     // Pop the max value
-    const max = this.values.pop();
+    const highestPriority = this.values.pop();
     // Sink down the new root to its right place
     if(len > 0) {
       this.sinkDown();
     }
-    
-    return max;
 
+    return highestPriority
   }
 }
   
-  
-const m = new MaxBinaryHeap()
+const ER = new PriorityQueue()
 
-m.insert(2)
-m.insert(6)
-m.insert(82)
+ER.enqueue('min',3)
+ER.enqueue('max', 0)
+ER.enqueue('mid', 2)
 
-console.log(m)
+console.log(ER.dequeue())
+console.log(ER.dequeue())
+console.log(ER.dequeue())
+console.log(ER.dequeue())
+console.log(ER.dequeue())
 
-
-
-
-
-
-
-
+console.log(ER)
