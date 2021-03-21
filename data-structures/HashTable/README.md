@@ -13,14 +13,20 @@ A good Hash is:
   - Doesn't cluster outputs at specific indices, but distributes uniformly
   - Deterministic (same input yields same output)
 
+Strategies to manage collisions:
+  + Separate Chaining
+      Nested data structure in position [[[],[]]]
+  + Linear probing
+      when we find a collision we search through the array to find the next empty slot.
+
 
 
 ## Methods
 
 ## Big O
 
-* Insertion - O(log n)
-* Removal - O(log n)
-* Search - O(n)
+* Insertion - O(1)
+* Removal - O(1)
+* Access - O(1)
 
 
