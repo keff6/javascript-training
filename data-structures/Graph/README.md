@@ -18,6 +18,14 @@ TODO: Add image
 
 ### Adjacency List
 
+## Traverse Graph Algorithms
+
+### Deep First Traversal - Recursive
+
+### Deep First Traversal - Iterative
+
+### Breadth First Traversal
+
 ### Big O comparison between Matrix and List
 
 TODO: add image

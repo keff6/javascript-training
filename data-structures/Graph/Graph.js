@@ -23,6 +23,33 @@ class Graph {
     }
     delete this.adjacencyList[vertex]
   }
+
+  DFS_recursive(vertex) {
+    // List to store the end result
+    const result = [];
+    // object to store visited vertices
+    const visited = {};
+
+    // helper recursive fucntion
+    const DFS = (vtx) => {
+      // return if vertex is empty
+      if (!vtx) return null;
+      // place the vertex into visits and result
+      result.push(vtx);
+      visited[vtx] = true;
+      // loop the adjacency list for that vertex
+      for(let v of this.adjacencyList[vtx]) {
+        if(!visits.hasOwnProperty(v)) {
+          DFS(v);
+        }
+      }
+    }
+
+    //invoke helper function with starting vertex
+    DFS(vertex);
+    // return results array
+    return result;
+  }
 }
 
 const y = new Graph();
