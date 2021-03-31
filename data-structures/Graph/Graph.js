@@ -83,6 +83,34 @@ class Graph {
     // return result
     return result;
   }
+
+  // breadth first traversal
+  BFT(vertex) {
+    // creata a queue and palce the starting vertex in it
+    const queue = [vertex];
+    // create an array to store nodes visited
+    const visitedArr = [];
+    // createa an object to store nodes visited
+    const visited = {};
+    // mark the starting vertex as visited
+    visited[vertex] = true;
+    // while there is anything in the queue
+    while(queue.length > 0) {
+      // remove the first vertex from the queue and push it into the visited array
+      const currentVtx = queue.shift();
+      visitedArr.push(currentVtx);
+
+      // loop ever each vertex in adjacency list
+      this.adjacencyList[currentVtx].forEach(neighbor => {
+        // if noha has not been visited yet
+        if(!visited.hasOwnProperty(neighbor)){
+          visited[neighbor] = true;
+          queue.push(neighbor)
+        }
+      })
+    }
+    return visitedArr;
+  }
 }
 
 const y = new Graph();
