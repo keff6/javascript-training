@@ -50,6 +50,39 @@ class Graph {
     // return results array
     return result;
   }
+
+  DFS_iterative(vertex) {
+    // create a stack to keep track of vertices and add the starting vertex
+    const vTracker = [vertex];
+    // create a list to store the end result
+    const result = [];
+    // create an object to store visited vertices
+    const visited = {};
+    let currentVtx;
+
+    // mark the first vertex as visited
+    visited[vertex] = true;
+
+    // while the stack has something in it
+    while(vTracker.length > 0) {
+      // pop the next vertex from the stack
+      currentVtx = vTracker.pop();
+      // add to result list
+      result.push(currentVtx);
+      
+      // visit all the curren vertex neighbors
+      this.adjacencyList[currentVtx].forEach(neighbor => {
+        // if hasnt been visited marked as visited
+        if(!visited.hasOwnProperty(neighbor)) {
+          visited[neighbor] = true;
+          // add the non visited neighbor to the stack
+          vTracker.push(neighbor);
+        }
+      })
+    }
+    // return result
+    return result;
+  }
 }
 
 const y = new Graph();
