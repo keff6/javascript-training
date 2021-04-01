@@ -1,5 +1,7 @@
 # Graph
 
+<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/Graph.png?raw=true" width="300">
+
 ## Description
 A graph data structure consists of a finite (and possibly mutable) set of vertices or nodes or points, together with a set of unordered pairs of these vertices for an unidirected graph or a set of ordered pairs for a directed graph.
 
@@ -14,9 +16,11 @@ It is basically a collection of nodes and connections.
 
 ### Adjacency Matrix
 
-TODO: Add image
+<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/AdjacencyList.png?raw=true" width="500">
 
 ### Adjacency List
+
+<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/AdjacencyMatrix.png?raw=true" width="500">
 
 ## Traverse Graph Algorithms
 
@@ -89,11 +93,11 @@ TODO: Add image
 ### Breadth First Traversal
 ```javascript
   BFT(vertex) {
-    // creata a queue and palce the starting vertex in it
+    // create a queue and place the starting vertex in it
     const queue = [vertex];
     // create an array to store nodes visited
     const visitedArr = [];
-    // createa an object to store nodes visited
+    // create an object to store nodes visited
     const visited = {};
     // mark the starting vertex as visited
     visited[vertex] = true;
@@ -118,17 +122,38 @@ TODO: Add image
 
 ### Big O comparison between Matrix and List
 
-TODO: add image
+<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/GRAPH_BO.png?raw=true" width="500">
 
-
-TODO: Add image
 
 ## Methods
+```javascript
+class Graph {
+  constructor() {
+    this.adjacencyList = {}
+  }
+  
+  addVertex(vertex) {
+    if(!this.adjacencyList.hasOwnProperty(vertex)) this.adjacencyList[vertex] = [];
+  }
+  
+  addEdge(vertex1, vertex2) {
+    this.adjacencyList[vertex1].push(vertex2);
+    this.adjacencyList[vertex2].push(vertex1);
+  }
+  
+  removeEdge(vertex1, vertex2) {
+    this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(e => e !== vertex2);
+    this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(e => e !== vertex1);
+  }
+  
+  removeVertex(vertex) {
+    for(let vert of this.adjacencyList[vertex]) {
+      this.removeEdge(vertex, vert)
+    }
+    delete this.adjacencyList[vertex]
+  }
+}
+```
 
-## Big O
-
-* Insertion - O(1)
-* Removal - O(1)
-* Access - O(1)
 
 
