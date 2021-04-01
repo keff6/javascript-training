@@ -1,6 +1,6 @@
 # Graph
 
-<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/Graph.png?raw=true" width="300">
+<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/Graph.PNG?raw=true" width="300">
 
 ## Description
 A graph data structure consists of a finite (and possibly mutable) set of vertices or nodes or points, together with a set of unordered pairs of these vertices for an unidirected graph or a set of ordered pairs for a directed graph.
@@ -14,11 +14,11 @@ It is basically a collection of nodes and connections.
 
 ## Approaches to store the data
 
-### Adjacency Matrix
+### Adjacency List
 
 <img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/AdjacencyList.png?raw=true" width="500">
 
-### Adjacency List
+### Adjacency Matrix
 
 <img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/AdjacencyMatrix.png?raw=true" width="500">
 
@@ -122,7 +122,7 @@ It is basically a collection of nodes and connections.
 
 ### Big O comparison between Matrix and List
 
-<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/GRAPH_BO.png?raw=true" width="500">
+<img src="https://github.com/keff6/javascript-training/blob/master/data-structures/images/GRAPH_BO.PNG?raw=true" width="500">
 
 
 ## Methods
